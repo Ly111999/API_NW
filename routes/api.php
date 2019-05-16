@@ -32,3 +32,16 @@ Route::group([
         Route::delete('/{id}', 'AuthController@destroy');
     });
 });
+Route::group([
+    'prefix' => 'job'
+], function () {
+    Route::get('/', 'JobController@index');
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function() {
+        Route::post('/', 'JobController@store');
+        Route::put('/{id}', 'JobController@update');
+        Route::delete('/{id}', 'JobController@destroy');
+
+    });
+});

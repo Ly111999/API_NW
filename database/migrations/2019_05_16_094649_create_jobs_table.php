@@ -18,6 +18,7 @@ class CreateJobsTable extends Migration
             $table->string('title');
             $table->string('location');
             $table->string('company')->nullable();
+            $table->string('slug');
             $table->text('description');
             $table->unsignedInteger('user_id');
             $table->foreign("user_id")->references("id")->on("users");
